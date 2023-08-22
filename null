@@ -1,0 +1,77 @@
+
+import React from 'react';
+import { View, Text } from 'react-native';
+
+// Import API service
+import { registerUser, getEmployees, getLeads, getOpportunities, getTasks } from './api';
+
+const App: React.FC = () => {
+  // User registration action
+  const handleUserRegistration = async () => {
+    try {
+      const registrationData = {
+        username: 'exampleUser',
+        password: 'examplePassword',
+        email: 'example@example.com',
+        role: 'admin',
+      };
+
+      const response = await registerUser(registrationData);
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // Fetch employees action
+  const handleFetchEmployees = async () => {
+    try {
+      const response = await getEmployees();
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // Fetch leads action
+  const handleFetchLeads = async () => {
+    try {
+      const response = await getLeads();
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // Fetch opportunities action
+  const handleFetchOpportunities = async () => {
+    try {
+      const response = await getOpportunities();
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // Fetch tasks action
+  const handleFetchTasks = async () => {
+    try {
+      const response = await getTasks();
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return (
+    <View>
+      <Text onPress={handleUserRegistration}>Register User</Text>
+      <Text onPress={handleFetchEmployees}>Fetch Employees</Text>
+      <Text onPress={handleFetchLeads}>Fetch Leads</Text>
+      <Text onPress={handleFetchOpportunities}>Fetch Opportunities</Text>
+      <Text onPress={handleFetchTasks}>Fetch Tasks</Text>
+    </View>
+  );
+};
+
+export default App;
